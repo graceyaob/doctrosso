@@ -17,105 +17,114 @@ class _AcceuilState extends State<Acceuil> {
     double largeur = MediaQuery.of(context).size.width;
 
     return Scaffold(
-        bottomNavigationBar: Container(
-      margin: EdgeInsets.all(largeur * 0.05),
-      height: largeur * 0.155,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 38,
-                offset: Offset(0, 10))
-          ],
-          borderRadius: BorderRadius.circular(50)),
-      child: ListView.builder(
-          itemCount: 4,
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.symmetric(horizontal: largeur * 0.02),
-          itemBuilder: (context, index) => InkWell(
-                onTap: () {
-                  setState(() {
-                    currentIndex = index;
-                    HapticFeedback.lightImpact();
-                  });
-                },
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                child: Stack(
-                  children: [
-                    AnimatedContainer(
-                      duration: Duration(seconds: 1),
-                      curve: Curves.fastLinearToSlowEaseIn,
-                      width: index == currentIndex
-                          ? largeur * 0.32
-                          : largeur * 0.16,
-                      alignment: Alignment.center,
-                      child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
-                        curve: Curves.fastLinearToSlowEaseIn,
-                        height: index == currentIndex ? largeur * 0.12 : 0,
-                        width: index == currentIndex ? largeur * 0.32 : 0,
-                        decoration: BoxDecoration(
-                            color: index == currentIndex
-                                ? Colors.blueAccent
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(50)),
-                      ),
-                    ),
-                    AnimatedContainer(
-                      duration: Duration(seconds: 1),
-                      curve: Curves.fastLinearToSlowEaseIn,
-                      width: index == currentIndex
-                          ? largeur * 0.31
-                          : largeur * 0.10,
-                      alignment: Alignment.center,
-                      child: Stack(children: [
-                        Row(
-                          children: [
-                            AnimatedContainer(
+        bottomNavigationBar: Stack(
+      children: [
+        Container(
+          height: largeur * 0.155,
+          decoration: BoxDecoration(color: couleurBouton),
+        ),
+        OverflowBox(
+          minHeight: largeur * 0.155,
+          maxHeight: largeur * 0.155,
+          child: Container(
+            height: largeur * 0.155,
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: ListView.builder(
+                itemCount: 5,
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.symmetric(horizontal: largeur * 0.02),
+                itemBuilder: (context, index) => InkWell(
+                      onTap: () {
+                        setState(() {
+                          currentIndex = index;
+                          HapticFeedback.lightImpact();
+                        });
+                      },
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      child: Stack(
+                        children: [
+                          AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                            width: index == currentIndex
+                                ? largeur * 0.32
+                                : largeur * 0.16,
+                            alignment: Alignment.center,
+                            child: AnimatedContainer(
                               duration: Duration(seconds: 1),
                               curve: Curves.fastLinearToSlowEaseIn,
-                              width: index == currentIndex ? largeur * 0.13 : 0,
+                              height:
+                                  index == currentIndex ? largeur * 0.12 : 0,
+                              width: index == currentIndex ? largeur * 0.32 : 0,
+                              decoration: BoxDecoration(
+                                  color: index == currentIndex
+                                      ? Colors.blueAccent
+                                      : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(50)),
                             ),
-                            AnimatedOpacity(
-                              opacity: index == currentIndex ? 1 : 0,
-                              duration: Duration(seconds: 1),
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              child: Text(
-                                index == currentIndex
-                                    ? "${listOfStrings[index]}"
-                                    : "",
-                                style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white,
-                                        fontSize: (largeur / 20) * 0.9)),
+                          ),
+                          AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                            width: index == currentIndex
+                                ? largeur * 0.31
+                                : largeur * 0.10,
+                            alignment: Alignment.center,
+                            child: Stack(children: [
+                              Row(
+                                children: [
+                                  AnimatedContainer(
+                                    duration: Duration(seconds: 1),
+                                    curve: Curves.fastLinearToSlowEaseIn,
+                                    width: index == currentIndex
+                                        ? largeur * 0.3
+                                        : 20,
+                                  ),
+                                  Icon(
+                                    listOfIcons[index],
+                                    size: largeur * 0.076,
+                                    color: index == currentIndex
+                                        ? Colors.blueAccent
+                                        : Colors.black,
+                                  )
+                                ],
                               ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            AnimatedContainer(
-                              duration: Duration(seconds: 1),
-                              curve: Curves.fastLinearToSlowEaseIn,
-                              width: index == currentIndex ? largeur * 0.3 : 20,
-                            ),
-                            Icon(
-                              listOfIcons[index],
-                              size: largeur * 0.076,
-                              color: index == currentIndex
-                                  ? Colors.blueAccent
-                                  : Colors.black,
-                            )
-                          ],
-                        )
-                      ]),
-                    )
-                  ],
-                ),
-              )),
+                              Row(
+                                children: [
+                                  AnimatedContainer(
+                                    duration: Duration(seconds: 1),
+                                    curve: Curves.fastLinearToSlowEaseIn,
+                                    width: index == currentIndex
+                                        ? largeur * 0.13
+                                        : 0,
+                                  ),
+                                  AnimatedOpacity(
+                                    opacity: index == currentIndex ? 1 : 0,
+                                    duration: Duration(seconds: 1),
+                                    curve: Curves.fastLinearToSlowEaseIn,
+                                    child: Text(
+                                      index == currentIndex
+                                          ? "${listOfStrings[index]}"
+                                          : "",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                          fontSize: 15),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ]),
+                          )
+                        ],
+                      ),
+                    )),
+          ),
+        )
+      ],
     ));
   }
 

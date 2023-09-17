@@ -1,5 +1,6 @@
 import 'package:doctrosso/pages/acceuil.dart';
 import 'package:doctrosso/pages/connexion.dart';
+import 'package:doctrosso/pages/home.dart';
 import 'package:flutter/material.dart';
 
 //mes variables
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Acceuil(),
+      home: HomePage(),
     );
   }
 }
