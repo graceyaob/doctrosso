@@ -40,4 +40,5 @@ class Config {
   static const errorBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(color: Colors.red));
+  static const couleurPrincipale = Color(0xFF3B82F6);
 }
