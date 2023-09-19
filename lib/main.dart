@@ -1,4 +1,5 @@
 import 'package:doctrosso/pages/connexion.dart';
+import 'package:doctrosso/pages/containerApp.dart';
 import 'package:doctrosso/pages/login.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,11 @@ class MyApp extends StatelessWidget {
               elevation: 10,
               type: BottomNavigationBarType.fixed),
           textTheme: GoogleFonts.poppinsTextTheme()),
-      home: const AuthPageState(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const AuthPageState(),
+        'main': (context) => const ContainerApp()
+      },
     );
   }
 }

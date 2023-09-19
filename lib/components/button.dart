@@ -6,18 +6,16 @@ class Button extends StatelessWidget {
       {super.key,
       required this.width,
       required this.title,
-      required this.onPressed,
-      required this.disable});
+      required this.disable,
+      required this.onPressed});
 
   final double width;
   final String title;
   final bool disable;
-  final Function onPressed;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    double largeur = MediaQuery.of(context).size.width;
-    double hauteur = MediaQuery.of(context).size.height;
     Config().init(context);
     return Container(
       decoration: BoxDecoration(
@@ -25,7 +23,7 @@ class Button extends StatelessWidget {
           borderRadius: BorderRadius.circular(30)),
       width: width,
       child: ElevatedButton(
-        onPressed: disable ? null : onPressed(),
+        onPressed: disable ? null : onPressed,
         style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

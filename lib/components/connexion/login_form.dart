@@ -1,5 +1,4 @@
 import 'package:doctrosso/components/button.dart';
-import 'package:doctrosso/pages/home.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 
@@ -63,12 +62,13 @@ class _LoginFormState extends State<LoginForm> {
           // login button
           Config.spaceSmall,
           Button(
-              width: double.infinity,
-              title: "Connexion",
-              onPressed: () {
-                HomePage();
-              },
-              disable: false)
+            width: double.infinity,
+            title: "Connexion",
+            disable: false,
+            onPressed: () {
+              Navigator.of(context).pushNamed("main");
+            },
+          ),
         ],
       ),
     );

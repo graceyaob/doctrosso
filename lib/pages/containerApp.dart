@@ -1,6 +1,10 @@
-import 'package:doctrosso/pages/consultaion.dart';
+import 'package:doctrosso/pages/consultation.dart';
+import 'package:doctrosso/pages/facture.dart';
 import 'package:doctrosso/pages/home.dart';
+import 'package:doctrosso/pages/profil.dart';
+import 'package:doctrosso/pages/rendezVous.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ContainerApp extends StatefulWidget {
   const ContainerApp({super.key});
@@ -23,7 +27,34 @@ class _ContainerAppState extends State<ContainerApp> {
             currentPage = value;
           });
         }),
-        children: [HomePage(), ConsultationPAge()],
+        children: const [
+          HomePage(),
+          ConsultationPAge(),
+          AppointPage(),
+          Profil(),
+          Facture()
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPage,
+        onTap: (page) {
+          setState(() {
+            currentPage = page;
+            _pageController.animateToPage(page,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut);
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.houseChimneyMedical),
+              label: "Acceuil"),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.solidFile), label: "Consultation"),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.solidCalendarCheck),
+              label: "Rendez-vous"),
+        ],
       ),
     );
   }
