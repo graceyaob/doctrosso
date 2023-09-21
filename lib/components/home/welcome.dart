@@ -1,7 +1,7 @@
-import 'package:doctrosso/components/button.dart';
 import 'package:doctrosso/components/imageProfil.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -10,12 +10,12 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     double largeur = MediaQuery.of(context).size.width;
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               bottomRight: Radius.circular(50),
               bottomLeft: Radius.circular(50)),
-          color: Colors.grey[50],
+          color: Colors.grey.withOpacity(0.05),
           border: Border.all(color: Colors.white, width: 2)),
       height: Config.heightSize * 0.30,
       child: Column(
@@ -30,14 +30,11 @@ class Welcome extends StatelessWidget {
                 Row(
                   children: [
                     CadrePhoto(raduis: 30),
-                    Text(
-                      "Grace YAO",
-                      style: TextStyle(fontSize: largeur * 0.04),
-                    )
+                    text(Colors.black, "Grace YAO")
                   ],
                 ),
                 //icone notification
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundColor: Colors.blue,
                 )
               ],
@@ -48,7 +45,7 @@ class Welcome extends StatelessWidget {
           Container(
             width: 68,
             height: 35,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.horizontal(
                     left: Radius.circular(75), right: Radius.circular(75)),
@@ -56,13 +53,7 @@ class Welcome extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset("assets/images/goutte-de-sang.png"),
-                Text(
-                  "O+",
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                )
+                text(const Color(0xFFED0010), "O+")
               ],
             ),
           ),
@@ -71,27 +62,14 @@ class Welcome extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Comment-Allez vous ",
-                style: TextStyle(fontSize: largeur * 0.04),
-              ),
+              text(const Color(0xFF655F5F), "Comment-Allez vous Aujourd'hui"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Grâce ",
-                    style: TextStyle(
-                        color: Config.couleurPrincipale,
-                        fontSize: largeur * 0.04),
-                  ),
-                  Text(
-                    "?",
-                    style: TextStyle(fontSize: largeur * 0.04),
-                  )
+                  text(Config.couleurPrincipale, "Grace"),
+                  text(const Color(0xFF655F5F), "?")
                 ],
               ),
-
-              //bouton
             ],
           ),
 
@@ -99,44 +77,52 @@ class Welcome extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    children: [
-                      Icon(Icons.calendar_month_rounded),
-                      SizedBox(
-                        width: Config.widthSize * 0.03,
-                      ),
-                      Text(
-                        "RDV",
-                      )
-                    ],
-                  )),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    children: [
-                      Icon(Icons.file_copy_rounded),
-                      SizedBox(
-                        width: Config.widthSize * 0.03,
-                      ),
-                      Text(
-                        "Consultation",
-                      )
-                    ],
-                  ))
+              button("RDV", const Icon(Icons.calendar_month_rounded)),
+              button("Consultation", const Icon(Ionicons.document_text_outline))
             ],
           )
         ],
       ),
+    );
+  }
+
+  // Mes widgets
+
+  Widget button(String title, Icon iconData) {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
+        onPressed: () {},
+        child: Row(
+          children: [
+            iconData,
+            SizedBox(
+              width: Config.widthSize * 0.03,
+            ),
+            Text(
+              "$title",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: Config.widthSize! * 0.04),
+            )
+          ],
+        ));
+  }
+
+  Widget text(
+    Color couleur,
+    String text,
+  ) {
+    return Text(
+      "$text ",
+      style: TextStyle(
+          color: couleur,
+          fontSize: Config.widthSize * 0.04,
+          fontWeight: FontWeight.bold),
     );
   }
 }
