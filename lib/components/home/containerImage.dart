@@ -10,31 +10,42 @@ class ContainerImage extends StatelessWidget {
   }
 
   Widget monContainerRaduis(String title, String image, String valeur) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.grey[100],
-          border: Border.all(color: Colors.white, width: 2)),
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-                fontSize: Config.widthSize * 0.04, fontWeight: FontWeight.w400),
+    return Material(
+        elevation: 10,
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [
+                BoxShadow(
+                    spreadRadius: 5,
+                    color: Colors.white,
+                    offset: Offset(0, 3),
+                    blurRadius: 7)
+              ],
+              color: Colors.white,
+              border: Border.all(color: Colors.white, width: 2)),
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                    fontSize: Config.widthSize * 0.04,
+                    fontWeight: FontWeight.w400),
+              ),
+              Image(
+                height: 50,
+                image: AssetImage(image),
+              ),
+              Text(
+                valeur,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: Config.widthSize * 0.04),
+              )
+            ],
           ),
-          Image(
-            height: 50,
-            image: AssetImage(image),
-          ),
-          Text(
-            valeur,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: Config.widthSize * 0.04),
-          )
-        ],
-      ),
-    );
+        ));
   }
 }
