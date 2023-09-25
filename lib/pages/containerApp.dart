@@ -4,6 +4,7 @@ import 'package:doctrosso/pages/home.dart';
 import 'package:doctrosso/pages/profil.dart';
 import 'package:doctrosso/pages/rendezVous.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ContainerApp extends StatefulWidget {
@@ -50,10 +51,14 @@ class _ContainerAppState extends State<ContainerApp> {
               icon: FaIcon(FontAwesomeIcons.houseChimneyMedical),
               label: "Acceuil"),
           BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.solidFile), label: "Consultation"),
+              icon: Icon(Ionicons.document_text_outline),
+              label: "Consultation"),
           BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.solidCalendarCheck),
-              label: "Rendez-vous"),
+              icon: Icon(Ionicons.calendar_outline), label: "Rendez-vous"),
+          BottomNavigationBarItem(
+              icon: Icon(Ionicons.person_outline), label: "Profil"),
+          BottomNavigationBarItem(
+              icon: Icon(Ionicons.book_outline), label: "Carnet"),
         ],
       ),
     );

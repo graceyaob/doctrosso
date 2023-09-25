@@ -1,3 +1,5 @@
+import 'package:doctrosso/components/button.dart';
+import 'package:doctrosso/components/buttonFacture.dart';
 import 'package:doctrosso/components/home/containerImage.dart';
 import 'package:doctrosso/components/home/welcome.dart';
 import 'package:doctrosso/components/imageProfil.dart';
@@ -20,7 +22,9 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Welcome(),
+          const Welcome(
+            columnVisible: true,
+          ),
           Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: Config.widthSize * 0.05,
@@ -40,9 +44,44 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: Config.widthSize * 0.05),
-                      child: ContainerImage())
+                      child: Column(
+                        children: [
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ContainerImage(
+                                  image: "assets/images/haltere.png",
+                                  titre: "Mon poids",
+                                  valeur: "75 kg"),
+                              ContainerImage(
+                                  image: "assets/images/taille.png",
+                                  titre: "Ma taille",
+                                  valeur: "150 cm")
+                            ],
+                          ),
+                          Config.spaceMeduim,
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ContainerImage(
+                                  image: "assets/images/formegros.png",
+                                  titre: "IMC",
+                                  valeur: "29 kg/m²"),
+                              ContainerImage(
+                                  image: "assets/images/sucre.png",
+                                  titre: "Diabétique",
+                                  valeur: "Non")
+                            ],
+                          )
+                        ],
+                      ))
                 ],
               )),
+          Config.spaceSmall,
+          Padding(
+            padding: EdgeInsets.only(left: Config.widthSize * 0.70),
+            child: const ButtonFacture(),
+          )
         ],
       ),
     );

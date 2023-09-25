@@ -8,7 +8,7 @@ class CadrePhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: raduis,
-      backgroundImage: AssetImage(
+      backgroundImage: const AssetImage(
         "assets/images/portrait_femme.jpg",
       ),
     );

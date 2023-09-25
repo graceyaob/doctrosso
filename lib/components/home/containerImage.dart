@@ -2,14 +2,17 @@ import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 
 class ContainerImage extends StatelessWidget {
-  const ContainerImage({super.key});
+  final String image;
+  final String titre;
+  final String valeur;
+  const ContainerImage(
+      {super.key,
+      required this.image,
+      required this.titre,
+      required this.valeur});
 
   @override
   Widget build(BuildContext context) {
-    return monContainerRaduis("Mon poids", "assets/images/sang.png", "75 kg");
-  }
-
-  Widget monContainerRaduis(String title, String image, String valeur) {
     return Material(
         elevation: 10,
         child: Container(
@@ -29,7 +32,7 @@ class ContainerImage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                title,
+                titre,
                 style: TextStyle(
                     fontSize: Config.widthSize * 0.04,
                     fontWeight: FontWeight.w400),
@@ -37,6 +40,7 @@ class ContainerImage extends StatelessWidget {
               Image(
                 height: 50,
                 image: AssetImage(image),
+                color: Config.couleurPrincipale,
               ),
               Text(
                 valeur,
