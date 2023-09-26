@@ -1,44 +1,31 @@
-import 'package:doctrosso/components/button.dart';
-import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
+import 'package:doctrosso/utils/config.dart';
+import 'package:doctrosso/components/button.dart';
+import 'package:ionicons/ionicons.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class LoginFormProfil extends StatefulWidget {
+  const LoginFormProfil({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<LoginFormProfil> createState() => _LoginFormProfilState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormProfilState extends State<LoginFormProfil> {
   final _formKey = GlobalKey<FormState>();
   final _isnController = TextEditingController();
   final _passwordController = TextEditingController();
   bool osbcurePass = true;
   @override
   Widget build(BuildContext context) {
-    double largeur = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: largeur * 0.05),
+      padding: EdgeInsets.symmetric(horizontal: Config.widthSize * 0.05),
       child: Form(
         key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // formulaire de connexion
-            TextFormField(
-              controller: _isnController,
-              keyboardType: TextInputType.text,
-              cursorColor: Colors.black12,
-              decoration: const InputDecoration(
-                border: Config.outLinedBorder,
-                focusedBorder: Config.focusBorder,
-                errorBorder: Config.errorBorder,
-                enabledBorder: Config.outLinedBorder,
-                hintText: "Code Patient",
-                labelText: "Code Patient",
-                alignLabelWithHint: true,
-              ),
-            ),
+            input("Code Patient", "Code Patient", Ionicons.person),
             Config.spaceSmall,
             TextFormField(
               controller: _passwordController,
@@ -46,10 +33,6 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: osbcurePass,
               cursorColor: Colors.black12,
               decoration: InputDecoration(
-                  border: Config.outLinedBorder,
-                  focusedBorder: Config.focusBorder,
-                  errorBorder: Config.errorBorder,
-                  enabledBorder: Config.outLinedBorder,
                   hintText: "Mot de passe",
                   labelText: "Mot de passe",
                   alignLabelWithHint: true,
@@ -82,6 +65,23 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget input(String labelText, String hintText, IconData prefixIcon) {
+    return TextFormField(
+      controller: _isnController,
+      keyboardType: TextInputType.text,
+      cursorColor: Colors.black12,
+      decoration: InputDecoration(
+        hintText: hintText,
+        labelText: labelText,
+        prefixIcon: Icon(
+          prefixIcon,
+          color: Config.couleurPrincipale,
+        ), // Utilisez l'icône de préfixe passée en paramètre
+        alignLabelWithHint: true,
       ),
     );
   }

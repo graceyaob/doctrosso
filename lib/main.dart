@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           inputDecorationTheme: const InputDecorationTheme(
               focusColor: Config.couleurPrincipale,
-              border: Config.outLinedBorder,
-              focusedBorder: Config.focusBorder,
-              errorBorder: Config.errorBorder,
-              enabledBorder: Config.outLinedBorder,
+              //border: Config.outLinedBorder,
+              //focusedBorder: Config.focusBorder,
+              //errorBorder: Config.errorBorder,
+              //enabledBorder: Config.outLinedBorder,
               floatingLabelStyle: TextStyle(color: Config.couleurPrincipale)),
           scaffoldBackgroundColor: Colors.white,
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
