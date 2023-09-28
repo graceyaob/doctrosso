@@ -1,11 +1,14 @@
 import 'package:doctrosso/components/connexion/login_form.dart';
 import 'package:doctrosso/components/imageProfil.dart';
+import 'package:doctrosso/components/profil/choixPhoto.dart';
 import 'package:doctrosso/components/profil/login_form_profil.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 
 class Profil extends StatefulWidget {
-  const Profil({super.key});
+  const Profil({
+    super.key,
+  });
 
   @override
   State<Profil> createState() => _ProfilState();
@@ -13,6 +16,10 @@ class Profil extends StatefulWidget {
 
 class _ProfilState extends State<Profil> {
   bool isObscurePassword = true;
+  String textAppbar = "Profil";
+  bool write = false;
+  bool visibilite = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +28,7 @@ class _ProfilState extends State<Profil> {
           elevation: 0,
           title: Center(
             child: Text(
-              "Profil",
+              textAppbar,
               style: TextStyle(
                   color: Config.couleurPrincipale,
                   fontSize: Config.widthSize * 0.05),
@@ -32,11 +39,15 @@ class _ProfilState extends State<Profil> {
               Icons.arrow_back,
               color: Config.couleurPrincipale,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed("profil");
+            },
           ),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {});
+                },
                 icon: Icon(
                   Icons.settings,
                   color: Config.couleurPrincipale,
@@ -66,7 +77,7 @@ class _ProfilState extends State<Profil> {
                                   color: Colors.black.withOpacity(0.1))
                             ],
                             shape: BoxShape.circle,
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
                                     "assets/images/portrait_femme.jpg")),
@@ -75,51 +86,50 @@ class _ProfilState extends State<Profil> {
                           bottom: 0,
                           right: 0,
                           child: Container(
-                            height: 40,
-                            width: 40,
+                            height: 45,
+                            width: 45,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border:
                                     Border.all(width: 4, color: Colors.white),
                                 color: Config.couleurPrincipale),
-                            child: Icon(
-                              Icons.edit,
-                              color: Colors.white,
-                            ),
+                            child: !write
+                                ? IconButton(
+                                    icon: const Icon(
+                                      Icons.edit,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        write = !write;
+                                        visibilite = !visibilite;
+                                        textAppbar = "Edites ton profil";
+                                      });
+                                    },
+                                  )
+                                : IconButton(
+                                    icon: const Icon(
+                                      Icons.camera_alt,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      showModalBottomSheet(
+                                          context: context,
+                                          builder: ((builder) =>
+                                              const ChoixPhoto()));
+                                    },
+                                  ),
                           ))
                     ],
                   ),
                 ),
-                Config.spaceSmall,
-                LoginFormProfil(),
+                LoginFormProfil(
+                  readOnly: !write,
+                  buttonVisible: !visibilite,
+                ),
               ],
             ),
           ),
         ));
-  }
-
-  Widget buildTextField(
-      String labelText, String placeholder, bool isPasswordTextField) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 30),
-      child: TextField(
-        obscureText: isPasswordTextField ? isObscurePassword : false,
-        decoration: InputDecoration(
-            suffixIcon: isPasswordTextField
-                ? IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.visibility_off_outlined,
-                      color: Colors.black,
-                    ))
-                : null,
-            contentPadding: EdgeInsets.only(bottom: 5),
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            hintStyle: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey),
-            labelText: labelText),
-      ),
-    );
   }
 }

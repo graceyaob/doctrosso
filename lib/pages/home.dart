@@ -80,7 +80,12 @@ class _HomePageState extends State<HomePage> {
           Config.spaceSmall,
           Padding(
             padding: EdgeInsets.only(left: Config.widthSize * 0.70),
-            child: const ButtonFacture(),
+            child: ButtonFacture(
+              fondBouton: Config.couleurPrincipale,
+              couleurEcriture: Colors.white,
+              title: "Facture",
+              onPressed: () {},
+            ),
           )
         ],
       ),

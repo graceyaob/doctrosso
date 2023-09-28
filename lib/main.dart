@@ -1,6 +1,7 @@
 import 'package:doctrosso/pages/connexion.dart';
 import 'package:doctrosso/pages/containerApp.dart';
 import 'package:doctrosso/pages/login.dart';
+import 'package:doctrosso/pages/profil.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const AuthPageState(),
-        'main': (context) => const ContainerApp()
+        'main': (context) => const ContainerApp(),
+        'profil': (context) => const Profil()
       },
     );
   }

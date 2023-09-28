@@ -21,7 +21,7 @@ class _AppointPageState extends State<AppointPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Welcome(columnVisible: false),
+            const Welcome(columnVisible: false),
             Expanded(
               // Utilisez Expanded pour que TabBarView occupe tout l'espace vertical disponible
               child: Column(
@@ -31,14 +31,14 @@ class _AppointPageState extends State<AppointPage> {
                     indicatorWeight: Config.heightSize * 0.005,
                     indicatorSize: TabBarIndicatorSize.label,
                     labelColor: Config.couleurPrincipale,
-                    tabs: [
+                    tabs: const [
                       Tab(
                         text: "Calendrier",
                       ),
                       Tab(text: 'Liste'),
                     ],
                   ),
-                  Expanded(
+                  const Expanded(
                     // Utilisez Expanded pour que TabBarView occupe tout l'espace vertical disponible
                     child: TabBarView(
                       children: [
@@ -71,7 +71,12 @@ class _AppointPageState extends State<AppointPage> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  ButtonFacture()
+                  ButtonFacture(
+                    fondBouton: Config.couleurPrincipale,
+                    couleurEcriture: Colors.white,
+                    title: "Facture",
+                    onPressed: () {},
+                  )
                 ],
               ),
             )
