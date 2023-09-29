@@ -5,17 +5,22 @@ class ButtonIcon extends StatelessWidget {
   final String title;
   final Icon icon;
   final VoidCallback onPressed;
+  final Color colorFond;
+  final Color colorText;
 
   const ButtonIcon(
       {super.key,
       required this.icon,
       required this.title,
-      required this.onPressed});
+      required this.onPressed,
+      required this.colorFond,
+      required this.colorText});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
+          backgroundColor: colorFond,
           elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
@@ -32,7 +37,8 @@ class ButtonIcon extends StatelessWidget {
               title,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: Config.widthSize! * 0.04),
+                  fontSize: Config.widthSize! * 0.04,
+                  color: colorText),
             )
           ],
         ));

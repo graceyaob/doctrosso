@@ -24,8 +24,6 @@ class _ProfilState extends State<Profil> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
           title: Center(
             child: Text(
               textAppbar,
@@ -35,12 +33,12 @@ class _ProfilState extends State<Profil> {
             ),
           ),
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Config.couleurPrincipale,
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed("profil");
+              Navigator.of(context).pushNamed("main");
             },
           ),
           actions: [
@@ -48,88 +46,83 @@ class _ProfilState extends State<Profil> {
                 onPressed: () {
                   setState(() {});
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings,
                   color: Config.couleurPrincipale,
                 ))
           ],
         ),
-        body: Container(
-          padding: EdgeInsets.only(left: 15, top: 20, right: 15),
-          child: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
-            child: ListView(
-              children: [
-                Center(
-                  child: Stack(
-                    children: [
-                      Container(
-                          width: 130,
-                          height: 130,
+        body: SafeArea(
+            child: Container(
+          padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
+          child: ListView(
+            children: [
+              Center(
+                child: Stack(
+                  children: [
+                    Container(
+                        width: 130,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 4, color: Colors.white),
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                color: Colors.black.withOpacity(0.1))
+                          ],
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                  "assets/images/portrait_femme.jpg")),
+                        )),
+                    Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          height: 45,
+                          width: 45,
                           decoration: BoxDecoration(
-                            border: Border.all(width: 4, color: Colors.white),
-                            boxShadow: [
-                              BoxShadow(
-                                  spreadRadius: 2,
-                                  blurRadius: 10,
-                                  color: Colors.black.withOpacity(0.1))
-                            ],
-                            shape: BoxShape.circle,
-                            image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                    "assets/images/portrait_femme.jpg")),
-                          )),
-                      Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            height: 45,
-                            width: 45,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 4, color: Colors.white),
-                                color: Config.couleurPrincipale),
-                            child: !write
-                                ? IconButton(
-                                    icon: const Icon(
-                                      Icons.edit,
-                                      color: Colors.white,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        write = !write;
-                                        visibilite = !visibilite;
-                                        textAppbar = "Edites ton profil";
-                                      });
-                                    },
-                                  )
-                                : IconButton(
-                                    icon: const Icon(
-                                      Icons.camera_alt,
-                                      color: Colors.white,
-                                    ),
-                                    onPressed: () {
-                                      showModalBottomSheet(
-                                          context: context,
-                                          builder: ((builder) =>
-                                              const ChoixPhoto()));
-                                    },
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 4, color: Colors.white),
+                              color: Config.couleurPrincipale),
+                          child: !write
+                              ? IconButton(
+                                  icon: const Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
                                   ),
-                          ))
-                    ],
-                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      write = !write;
+                                      visibilite = !visibilite;
+                                      textAppbar = "Edites ton profil";
+                                    });
+                                  },
+                                )
+                              : IconButton(
+                                  icon: const Icon(
+                                    Icons.camera_alt,
+                                    color: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                        context: context,
+                                        builder: ((builder) =>
+                                            const ChoixPhoto()));
+                                  },
+                                ),
+                        ))
+                  ],
                 ),
-                LoginFormProfil(
-                  readOnly: !write,
-                  buttonVisible: !visibilite,
-                ),
-              ],
-            ),
+              ),
+              LoginFormProfil(
+                readOnly: !write,
+                buttonVisible: !visibilite,
+              ),
+            ],
           ),
-        ));
+        )));
   }
 }

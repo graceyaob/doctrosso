@@ -1,5 +1,7 @@
+import 'package:doctrosso/components/rendez-vous/appoint.dart';
 import 'package:doctrosso/pages/connexion.dart';
 import 'package:doctrosso/pages/containerApp.dart';
+import 'package:doctrosso/pages/home.dart';
 import 'package:doctrosso/pages/login.dart';
 import 'package:doctrosso/pages/profil.dart';
 import 'package:doctrosso/utils/config.dart';
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
       title: "Doctrôssô",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: Colors.white, elevation: 0),
           inputDecorationTheme: const InputDecorationTheme(
               focusColor: Config.couleurPrincipale,
               //border: Config.outLinedBorder,
@@ -43,7 +46,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const AuthPageState(),
         'main': (context) => const ContainerApp(),
-        'profil': (context) => const Profil()
+        'profil': (context) => const Profil(),
+        'calendrier': (context) => const AppointListeApp()
       },
     );
   }

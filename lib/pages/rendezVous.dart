@@ -1,5 +1,6 @@
 import 'package:doctrosso/components/buttonFacture.dart';
 import 'package:doctrosso/components/home/welcome.dart';
+import 'package:doctrosso/components/rendez-vous/appoint.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,10 @@ class _AppointPageState extends State<AppointPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Welcome(columnVisible: false),
+            const Welcome(
+              columnVisible: false,
+              selection: true,
+            ),
             Expanded(
               // Utilisez Expanded pour que TabBarView occupe tout l'espace vertical disponible
               child: Column(
@@ -38,15 +42,18 @@ class _AppointPageState extends State<AppointPage> {
                       Tab(text: 'Liste'),
                     ],
                   ),
-                  const Expanded(
+                  Config.spaceSmall,
+                  Expanded(
                     // Utilisez Expanded pour que TabBarView occupe tout l'espace vertical disponible
                     child: TabBarView(
                       children: [
                         Center(
                           child: Text("Man"),
                         ),
-                        Center(
-                          child: Text("pap"),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Config.widthSize * 0.02),
+                          child: AppointListeApp(),
                         ),
                       ],
                     ),
@@ -63,7 +70,9 @@ class _AppointPageState extends State<AppointPage> {
                 children: [
                   FloatingActionButton(
                     mini: true,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed("calendrier");
+                    },
                     child: Text(
                       "+",
                       style: TextStyle(

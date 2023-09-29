@@ -2,6 +2,7 @@ import 'package:doctrosso/components/connexion/login_form.dart';
 import 'package:doctrosso/components/home/buttonIcon.dart';
 import 'package:doctrosso/pages/login.dart';
 import 'package:doctrosso/pages/profil.dart';
+import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -21,6 +22,8 @@ class NavigationRdv extends StatelessWidget {
                   icon: const Icon(Ionicons.calendar_outline),
                   title: "RDV",
                   onPressed: () {},
+                  colorFond: Config.couleurPrincipale,
+                  colorText: Colors.white,
                 ),
               ),
               Tab(

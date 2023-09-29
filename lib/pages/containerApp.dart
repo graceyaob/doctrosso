@@ -8,7 +8,9 @@ import 'package:ionicons/ionicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ContainerApp extends StatefulWidget {
-  const ContainerApp({super.key});
+  const ContainerApp({
+    super.key,
+  });
 
   @override
   State<ContainerApp> createState() => _ContainerAppState();

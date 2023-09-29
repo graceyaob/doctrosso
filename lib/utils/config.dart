@@ -30,8 +30,9 @@ class Config {
     height: screenHeight! * 0.08,
   );
 
-  static const outLinedBorder =
-      OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8)));
+  static const outLinedBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderSide: BorderSide(color: Colors.grey));
 
   static const focusBorder = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -41,4 +42,5 @@ class Config {
       borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(color: Colors.red));
   static const couleurPrincipale = Color(0xFF3B82F6);
+  static const couleurBoutonSelectionner = Color(0xFFC3EDFD);
 }

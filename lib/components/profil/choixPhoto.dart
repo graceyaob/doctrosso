@@ -10,6 +10,7 @@ class ChoixPhoto extends StatefulWidget {
 }
 
 class _ChoixPhotoState extends State<ChoixPhoto> {
+  final imagePicker = ImagePicker();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,5 +44,14 @@ class _ChoixPhotoState extends State<ChoixPhoto> {
         )
       ]),
     );
+  }
+
+  void changerImage(ImageSource source) async {
+    final imagePicker = ImagePicker();
+    final pickerFile = await imagePicker.pickImage(source: source);
+
+    if (pickerFile != null) {
+      setState(() {});
+    }
   }
 }

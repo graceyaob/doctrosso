@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 class Welcome extends StatelessWidget {
-  const Welcome({super.key, required this.columnVisible});
+  const Welcome(
+      {super.key, required this.columnVisible, required this.selection});
   final bool columnVisible;
+  final bool selection;
 
   @override
   Widget build(BuildContext context) {
@@ -87,14 +89,23 @@ class Welcome extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ButtonIcon(
-                  icon: const Icon(Ionicons.calendar_outline),
+                  icon: Icon(
+                    Ionicons.calendar_outline,
+                  ),
                   title: "RDV",
                   onPressed: () {},
+                  colorFond: selection
+                      ? Config.couleurBoutonSelectionner
+                      : Config.couleurPrincipale,
+                  colorText:
+                      selection ? Config.couleurPrincipale : Colors.white,
                 ),
                 ButtonIcon(
                   icon: const Icon(Ionicons.document_text_outline),
                   title: "Consultation",
                   onPressed: () {},
+                  colorFond: Config.couleurPrincipale,
+                  colorText: Colors.white,
                 )
               ],
             )
@@ -105,31 +116,6 @@ class Welcome extends StatelessWidget {
   }
 
   // Mes widgets
-
-  Widget button(String title, Icon iconData) {
-    return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          elevation: 10,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
-        onPressed: () {},
-        child: Row(
-          children: [
-            iconData,
-            SizedBox(
-              width: Config.widthSize * 0.03,
-            ),
-            Text(
-              title,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: Config.widthSize! * 0.04),
-            )
-          ],
-        ));
-  }
 
   Widget text(
     Color couleur,

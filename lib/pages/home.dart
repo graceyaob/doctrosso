@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           const Welcome(
             columnVisible: true,
+            selection: false,
           ),
           Padding(
               padding: EdgeInsets.symmetric(
