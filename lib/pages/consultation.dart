@@ -12,8 +12,19 @@ class ConsultationPAge extends StatefulWidget {
 
 class _ConsultationPAgeState extends State<ConsultationPAge> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String choixHopital = 'Option 1';
-  List<String> _items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+
+  List<String> _items = ['Hopital 1', 'Hopital 2', 'Option 3', 'Option 4'];
+  String? choixHopital;
+  // String choixHopital = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      choixHopital = _items[0];
+    });
+  } // variable contenant la valeur selectionner
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +48,17 @@ class _ConsultationPAgeState extends State<ConsultationPAge> {
         ),
         body: SafeArea(
           child: Column(children: [
+            //cadre de design
             Container(
                 width: double.infinity,
                 height: Config.heightSize * 0.1,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Config.couleurPrincipale,
                     borderRadius:
                         BorderRadius.only(bottomRight: Radius.circular(100))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(
                       Ionicons.document_text_outline,
@@ -55,9 +67,17 @@ class _ConsultationPAgeState extends State<ConsultationPAge> {
                     ),
                     Text(
                       "Formulaire de création de fiche de paiement",
-                    )
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: Config.widthSize * 0.038),
+                    ),
                   ],
-                ))
+                )),
+            SizedBox(
+              height: 10,
+            ),
+            formulaire()
           ]),
         ));
   }
@@ -91,9 +111,11 @@ class _ConsultationPAgeState extends State<ConsultationPAge> {
                       value: choixHopital,
                       onChanged: (newValue) {
                         setState(() {
-                          choixHopital = newValue!;
+                          choixHopital =
+                              newValue!; // mise à jour de choixHopital avec la nouvelle valeur sélectionnée
                         });
                       },
+                      //C'est la liste des éléments qui apparaissent dans le menu déroulant. Dans cet exemple, _items est une liste d'éléments de type String. Chaque élément de cette liste est transformé en un DropdownMenuItem<String> qui contient la valeur et l'affichage textuel de l'élément.
                       items: _items.map((item) {
                         return DropdownMenuItem<String>(
                           value: item,

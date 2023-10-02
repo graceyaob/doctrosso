@@ -18,12 +18,12 @@ class LoginFormProfil extends StatefulWidget {
 
 class _LoginFormProfilState extends State<LoginFormProfil> {
   final _formKey = GlobalKey<FormState>();
-  final _isnController = TextEditingController();
-  final _nomController = TextEditingController();
-  final _prenomController = TextEditingController();
-  final _dateController = TextEditingController();
-  final _assuranceController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _isnController = TextEditingController(text: "DPI0000000");
+  final _nomController = TextEditingController(text: "YAO");
+  final _prenomController = TextEditingController(text: "Grace");
+  final _dateController = TextEditingController(text: "08-06-1999");
+  final _assuranceController = TextEditingController(text: "MCI Care");
+  final _passwordController = TextEditingController(text: "zkdcjhud");
   bool osbcurePass = true;
 
   @override
@@ -38,21 +38,33 @@ class _LoginFormProfilState extends State<LoginFormProfil> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               // formulaire de connexion
-              input("Code Patient", "DPI0378999", Ionicons.accessibility_sharp,
-                  _isnController, widget.readOnly),
+              TextFormField(
+                readOnly: true,
+                controller: _isnController,
+                keyboardType: TextInputType.text,
+                cursorColor: Colors.black12,
+                decoration: InputDecoration(
+                  labelText: "Code Patient",
+                  prefixIcon: Icon(
+                    Ionicons.person,
+                    color: Config.couleurPrincipale,
+                  ), // Utilisez l'icône de préfixe passée en paramètre
+                ),
+              ),
               Config.spaceSmall,
-              input("Nom", "YAO", Ionicons.person, _nomController,
+              input("Nom", Ionicons.person, _nomController, widget.readOnly),
+              Config.spaceSmall,
+              input("Prenom", Ionicons.person, _prenomController,
                   widget.readOnly),
               Config.spaceSmall,
-              input("Prenom", "Grace", Ionicons.person, _prenomController,
+              input("Date de Naissance", Ionicons.calendar, _dateController,
                   widget.readOnly),
               Config.spaceSmall,
-              input("Date de Naissance", "08-06-1999", Ionicons.calendar,
-                  _dateController, widget.readOnly),
-              Config.spaceSmall,
-              input("Assurance", "MCI Care", Ionicons.document_text_sharp,
+              input("Assurance", Ionicons.document_text_sharp,
                   _assuranceController, widget.readOnly),
               Config.spaceSmall,
+
+              //champ mot de passe
               TextFormField(
                 readOnly: widget.readOnly,
                 controller: _passwordController,
@@ -60,7 +72,6 @@ class _LoginFormProfilState extends State<LoginFormProfil> {
                 obscureText: osbcurePass,
                 cursorColor: Colors.black12,
                 decoration: InputDecoration(
-                    hintText: "Mot de passe",
                     labelText: "Mot de passe",
                     alignLabelWithHint: true,
                     prefixIcon: Icon(
@@ -112,7 +123,8 @@ class _LoginFormProfilState extends State<LoginFormProfil> {
     });
   }
 
-  Widget input(String labelText, String hintText, IconData prefixIcon,
+// mon widget input
+  Widget input(String labelText, IconData prefixIcon,
       TextEditingController controller, bool readOnly) {
     return TextFormField(
       readOnly: readOnly,
@@ -120,13 +132,11 @@ class _LoginFormProfilState extends State<LoginFormProfil> {
       keyboardType: TextInputType.text,
       cursorColor: Colors.black12,
       decoration: InputDecoration(
-        hintText: hintText,
         labelText: labelText,
         prefixIcon: Icon(
           prefixIcon,
           color: Config.couleurPrincipale,
         ), // Utilisez l'icône de préfixe passée en paramètre
-        alignLabelWithHint: true,
       ),
     );
   }

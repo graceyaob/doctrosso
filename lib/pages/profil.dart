@@ -1,4 +1,3 @@
-import 'package:doctrosso/components/connexion/login_form.dart';
 import 'package:doctrosso/components/imageProfil.dart';
 import 'package:doctrosso/components/profil/choixPhoto.dart';
 import 'package:doctrosso/components/profil/login_form_profil.dart';
@@ -6,9 +5,9 @@ import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 
 class Profil extends StatefulWidget {
-  const Profil({
-    super.key,
-  });
+  final bool write;
+  final bool visibility;
+  const Profil({super.key, this.visibility = true, this.write = false});
 
   @override
   State<Profil> createState() => _ProfilState();
@@ -19,6 +18,13 @@ class _ProfilState extends State<Profil> {
   String textAppbar = "Profil";
   bool write = false;
   bool visibilite = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    write = widget.write;
+    visibilite = widget.visibility;
+  }
 
   @override
   Widget build(BuildContext context) {
