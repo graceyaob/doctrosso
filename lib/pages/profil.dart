@@ -5,9 +5,9 @@ import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 
 class Profil extends StatefulWidget {
-  final bool write;
-  final bool visibility;
-  const Profil({super.key, this.visibility = true, this.write = false});
+  const Profil({
+    super.key,
+  });
 
   @override
   State<Profil> createState() => _ProfilState();
@@ -18,13 +18,6 @@ class _ProfilState extends State<Profil> {
   String textAppbar = "Profil";
   bool write = false;
   bool visibilite = true;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    write = widget.write;
-    visibilite = widget.visibility;
-  }
 
   @override
   Widget build(BuildContext context) {

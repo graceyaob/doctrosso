@@ -1,11 +1,8 @@
 import 'package:doctrosso/components/connexion/modifier_MDP.dart';
 import 'package:doctrosso/components/rendez-vous/appoint.dart';
-import 'package:doctrosso/pages/connexion.dart';
 import 'package:doctrosso/pages/containerApp.dart';
-import 'package:doctrosso/pages/home.dart';
 import 'package:doctrosso/pages/login.dart';
-import 'package:doctrosso/pages/profil.dart';
-import 'package:doctrosso/pages/verificationInfo.dart';
+import 'package:doctrosso/pages/modifInfo.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,10 +31,6 @@ class MyApp extends StatelessWidget {
           ),
           inputDecorationTheme: const InputDecorationTheme(
               focusColor: Config.couleurPrincipale,
-              //border: Config.outLinedBorder,
-              //focusedBorder: Config.focusBorder,
-              //errorBorder: Config.errorBorder,
-              //enabledBorder: Config.outLinedBorder,
               floatingLabelStyle: TextStyle(color: Config.couleurPrincipale)),
           scaffoldBackgroundColor: Colors.white,
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -51,13 +44,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const AuthPageState(),
-        'verification': (context) => const VerificationInfo(),
         'main': (context) => const ContainerApp(),
         'modifier': (context) => const LoginModif(),
-        'profil': (context) => const Profil(
-              visibility: false,
-              write: true,
-            ),
+        'modifInfo': (context) => const ModiInfo(),
         'calendrier': (context) => const AppointListeApp()
       },
     );
