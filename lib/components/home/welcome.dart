@@ -93,7 +93,9 @@ class Welcome extends StatelessWidget {
                     Ionicons.calendar_outline,
                   ),
                   title: "RDV",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("rdv");
+                  },
                   colorFond: selection
                       ? Config.couleurBoutonSelectionner
                       : Config.couleurPrincipale,
@@ -103,7 +105,9 @@ class Welcome extends StatelessWidget {
                 ButtonIcon(
                   icon: const Icon(Ionicons.document_text_outline),
                   title: "Consultation",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("consultation");
+                  },
                   colorFond: Config.couleurPrincipale,
                   colorText: Colors.white,
                 )

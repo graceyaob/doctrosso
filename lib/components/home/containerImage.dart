@@ -16,6 +16,7 @@ class ContainerImage extends StatelessWidget {
     return Material(
         elevation: 10,
         child: Container(
+          width: Config.widthSize * 0.36,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               boxShadow: const [

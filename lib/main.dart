@@ -1,8 +1,10 @@
 import 'package:doctrosso/components/connexion/modifier_MDP.dart';
 import 'package:doctrosso/components/rendez-vous/appoint.dart';
+import 'package:doctrosso/pages/consultation.dart';
 import 'package:doctrosso/pages/containerApp.dart';
 import 'package:doctrosso/pages/login.dart';
 import 'package:doctrosso/pages/modifInfo.dart';
+import 'package:doctrosso/pages/rendezVous.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: "Doctrôssô",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             elevation: 0,
             foregroundColor: Config.couleurPrincipale,
@@ -47,7 +49,9 @@ class MyApp extends StatelessWidget {
         'main': (context) => const ContainerApp(),
         'modifier': (context) => const LoginModif(),
         'modifInfo': (context) => const ModiInfo(),
-        'calendrier': (context) => const AppointListeApp()
+        'calendrier': (context) => const AppointListeApp(),
+        'consultation': (context) => const ConsultationPAge(),
+        'rdv': (context) => const AppointPage()
       },
     );
   }

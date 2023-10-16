@@ -1,5 +1,6 @@
+import 'package:doctrosso/pages/carnet.dart';
 import 'package:doctrosso/pages/consultation.dart';
-import 'package:doctrosso/pages/facture.dart';
+
 import 'package:doctrosso/pages/home.dart';
 import 'package:doctrosso/pages/profil.dart';
 import 'package:doctrosso/pages/rendezVous.dart';
@@ -16,10 +17,23 @@ class ContainerApp extends StatefulWidget {
   State<ContainerApp> createState() => _ContainerAppState();
 }
 
-int currentPage = 0;
-final PageController _pageController = PageController();
+int currentPage = 0; //position des pages
+PageController _pageController = PageController(); //le controlleur des pages
 
 class _ContainerAppState extends State<ContainerApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +49,7 @@ class _ContainerAppState extends State<ContainerApp> {
           ConsultationPAge(),
           AppointPage(),
           Profil(),
-          Facture()
+          Carnet()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -43,9 +57,7 @@ class _ContainerAppState extends State<ContainerApp> {
         onTap: (page) {
           setState(() {
             currentPage = page;
-            _pageController.animateToPage(page,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeInOut);
+            _pageController.jumpToPage(page);
           });
         },
         items: const [
