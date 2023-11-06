@@ -38,7 +38,7 @@ class _CarnetState extends State<Carnet> {
             Positioned(
               bottom: Config.heightSize * 0.0005,
               right: Config.widthSize * 0.38,
-              child: CadrePhoto(raduis: 50),
+              child: const CadrePhoto(raduis: 50),
             ),
           ],
         ),
@@ -50,249 +50,30 @@ class _CarnetState extends State<Carnet> {
               fontSize: Config.widthSize * 0.045),
         ),
         Config.spaceSmall,
-        Container(
-          height: Config.heightSize * 0.5,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
+        SizedBox(
+          height: Config.heightSize * 0.45,
+          child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: ListTile(
+                    title: Text(
+                      "Consultation Medecine Generale",
+                      style: TextStyle(
+                        color: Config.couleurPrincipale,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
+                    ),
+                    subtitle: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [Text("01/08/2023"), Text("10:00")],
+                    ),
+                    trailing:
+                        TextButton(onPressed: () {}, child: Text("Détail")),
                   ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          bottomLeft: Radius.circular(15))),
-                  elevation: 4,
-                  shadowColor: Colors.grey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consultation en Medecine générale",
-                        style: TextStyle(
-                          color: Config.couleurPrincipale,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Config.spaceSmall,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("01/08/2023"), Text("10:00")],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+                );
+              }),
         )
       ]),
     ));

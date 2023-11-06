@@ -13,9 +13,53 @@ class AppointListeApp extends StatefulWidget {
 class _AppointListeAppState extends State<AppointListeApp> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: Config.heightSize * 0.001,
-      child: Card(
+    return SizedBox(
+        height: Config.heightSize * 0.001,
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: ListView.builder(
+              itemCount: 9,
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
+                  children: [
+                    const Divider(
+                      color: Colors.black,
+                      thickness: 0.4,
+                      indent: 20,
+                      endIndent: 20,
+                    ),
+                    Card(
+                      elevation: 6,
+                      child: ListTile(
+                        title: const Text("Gynecologie"),
+                        subtitle: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Hopital General de Bingerville"),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "19/10/2023",
+                                  style: TextStyle(
+                                    color: Config.couleurPrincipale,
+                                  ),
+                                ),
+                                Text("10:00")
+                              ],
+                            )
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed("detail_consultation");
+                        },
+                      ),
+                    )
+                  ],
+                );
+              }),
+        ) /*Card(
         shape: RoundedRectangleBorder(
           side: BorderSide(color: Colors.grey),
           borderRadius: BorderRadius.circular(20),
@@ -53,7 +97,7 @@ class _AppointListeAppState extends State<AppointListeApp> {
             ],
           ),
         ),
-      ),
-    );
+      ),*/
+        );
   }
 }

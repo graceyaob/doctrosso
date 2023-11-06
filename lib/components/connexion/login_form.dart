@@ -1,6 +1,7 @@
 import 'package:doctrosso/components/button.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
+import 'package:doctrosso/api/api.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -77,6 +78,10 @@ class _LoginFormState extends State<LoginForm> {
               title: "Connexion",
               disable: false,
               onPressed: () {
+                apipost({
+                  "username": _isnController.text,
+                  "password": _passwordController.text
+                });
                 Navigator.of(context).pushNamed("modifier");
               },
             ),

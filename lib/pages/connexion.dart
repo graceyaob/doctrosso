@@ -3,6 +3,7 @@ import 'package:doctrosso/pages/acceuil.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:doctrosso/api/api.dart';
 
 class Connexion extends StatelessWidget {
   const Connexion({super.key});
@@ -14,6 +15,8 @@ class Connexion extends StatelessWidget {
     double largeur = MediaQuery.of(context).size.width;
     //style d'écriture
     double ecriture = largeur / 20;
+    TextEditingController usernameController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
 
     //code
 

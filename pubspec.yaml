@@ -49,6 +49,7 @@ dependencies:
   rating_dialog: ^2.0.4
   shared_preferences: ^2.2.1
   provider: ^6.0.5
+  http: ^1.1.0
 
 
 

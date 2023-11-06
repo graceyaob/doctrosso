@@ -4,6 +4,7 @@ import 'package:doctrosso/pages/consultation.dart';
 import 'package:doctrosso/pages/containerApp.dart';
 import 'package:doctrosso/pages/login.dart';
 import 'package:doctrosso/pages/modifInfo.dart';
+import 'package:doctrosso/pages/navigationRDV.dart';
 import 'package:doctrosso/pages/rendezVous.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
         'modifInfo': (context) => const ModiInfo(),
         'calendrier': (context) => const AppointListeApp(),
         'consultation': (context) => const ConsultationPAge(),
-        'rdv': (context) => const AppointPage()
+        'rdv': (context) => const AppointPage(),
+        "detail_consultation": (context) => const RdvApp()
       },
     );
   }

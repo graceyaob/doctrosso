@@ -179,6 +179,7 @@ class _ConsultationPAgeState extends State<ConsultationPAge> {
                 ),
               ],
             ),
+            Config.spaceSmall,
             Button(
                 width: double.infinity,
                 title: "Enregistrer",
