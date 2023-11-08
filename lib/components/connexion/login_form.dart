@@ -15,6 +15,7 @@ class _LoginFormState extends State<LoginForm> {
   final _isnController = TextEditingController();
   final _passwordController = TextEditingController();
   bool osbcurePass = true;
+  Map<String, dynamic> data = Map();
   @override
   Widget build(BuildContext context) {
     double largeur = MediaQuery.of(context).size.width;
@@ -77,12 +78,19 @@ class _LoginFormState extends State<LoginForm> {
               width: double.infinity,
               title: "Connexion",
               disable: false,
-              onPressed: () {
-                apipost({
+              onPressed: () async {
+                await apiPostLogin({
                   "username": _isnController.text,
                   "password": _passwordController.text
                 });
-                Navigator.of(context).pushNamed("modifier");
+
+                data = await apiGetLogin();
+
+                if (data["first_login"]) {
+                  Navigator.of(context).pushNamed("modifier");
+                } else {
+                  Navigator.of(context).pushNamed("main");
+                }
               },
             ),
           ],

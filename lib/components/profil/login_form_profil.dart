@@ -1,4 +1,7 @@
+import 'package:doctrosso/api/api.dart';
 import 'package:doctrosso/components/buttonFacture.dart';
+import 'package:doctrosso/fonctions/fonction.dart';
+import 'package:doctrosso/pages/connexion.dart';
 import 'package:flutter/material.dart';
 import 'package:doctrosso/utils/config.dart';
 import 'package:doctrosso/components/button.dart';
@@ -18,13 +21,30 @@ class LoginFormProfil extends StatefulWidget {
 
 class _LoginFormProfilState extends State<LoginFormProfil> {
   final _formKey = GlobalKey<FormState>();
-  final _isnController = TextEditingController(text: "DPI0000000");
-  final _nomController = TextEditingController(text: "YAO");
+  final _isnController = TextEditingController(text: "code patient");
+  final _nomController = TextEditingController();
   final _prenomController = TextEditingController(text: "Grace");
   final _dateController = TextEditingController(text: "08-06-1999");
   final _assuranceController = TextEditingController(text: "MCI Care");
-  final _passwordController = TextEditingController(text: "zkdcjhud");
+  final _passwordController = TextEditingController();
   bool osbcurePass = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getLocal().then((value) => _passwordController.text = value[4]);
+
+    apiGetLogin().then(
+      (value) {
+        _isnController.text = value['patients']['code_patient'];
+        _dateController.text = value['patients']['date_naissance'];
+        _nomController.text = value['patients']['nom'];
+        _prenomController.text = value['patients']['prenoms'];
+      },
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
